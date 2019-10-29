@@ -175,7 +175,7 @@ def generate():
 @app.route("/video_feed")
 def video_feed():
     return Response(generate(),
-		mimetype = "multipart/x-mixed-replace; boundary=frame")
+		mimetype = "application/json")
 
 
 @app.route("/")
