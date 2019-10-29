@@ -184,11 +184,21 @@ import json
 def generate():
     key = ["test1", "test2"]
     response = ["hello", "world"]
+    yield "{"
+    yield "\"results\": ["
 
-    for k, r in zip(key, response):
+    data = zip(key, response)
+
+    for i, datum in enumerate(data):
+        k, r = datum
         d = dict()
         d[k] = r
         yield json.dumps(d)
+
+        if i+1 < len(key):
+            yield ','
+    
+    yield "]}"
 
 # def generate():
 #     yield '{"releases": ['
